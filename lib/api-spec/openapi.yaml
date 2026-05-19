@@ -1,0 +1,390 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: RoadSoS Emergency Response API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: sos
+    description: SOS alert operations
+  - name: contacts
+    description: Emergency contacts
+  - name: incidents
+    description: Incident reports
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /sos/alerts:
+    get:
+      operationId: listSosAlerts
+      tags: [sos]
+      summary: List recent SOS alerts
+      parameters:
+        - name: userId
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: List of alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SosAlert"
+    post:
+      operationId: createSosAlert
+      tags: [sos]
+      summary: Trigger an SOS alert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SosAlertInput"
+      responses:
+        "201":
+          description: Alert created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SosAlert"
+
+  /sos/alerts/{alertId}:
+    get:
+      operationId: getSosAlert
+      tags: [sos]
+      summary: Get a specific SOS alert
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Alert details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SosAlert"
+    patch:
+      operationId: updateSosAlert
+      tags: [sos]
+      summary: Update alert status
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SosAlertUpdate"
+      responses:
+        "200":
+          description: Updated alert
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SosAlert"
+
+  /contacts:
+    get:
+      operationId: listContacts
+      tags: [contacts]
+      summary: List emergency contacts for a user
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EmergencyContact"
+    post:
+      operationId: createContact
+      tags: [contacts]
+      summary: Add emergency contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmergencyContactInput"
+      responses:
+        "201":
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmergencyContact"
+
+  /contacts/{contactId}:
+    delete:
+      operationId: deleteContact
+      tags: [contacts]
+      summary: Delete emergency contact
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deleted
+
+  /incidents:
+    get:
+      operationId: listIncidents
+      tags: [incidents]
+      summary: List recent road incidents
+      parameters:
+        - name: lat
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: lng
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: radius
+          in: query
+          required: false
+          schema:
+            type: number
+            description: radius in km
+      responses:
+        "200":
+          description: List of incidents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Incident"
+    post:
+      operationId: reportIncident
+      tags: [incidents]
+      summary: Report a road incident
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IncidentInput"
+      responses:
+        "201":
+          description: Incident reported
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Incident"
+
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [sos]
+      summary: Dashboard summary for a user
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Summary stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    SosAlert:
+      type: object
+      required: [id, userId, type, status, latitude, longitude, createdAt]
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        type:
+          type: string
+          enum: [accident, breakdown, medical, fire, other]
+        status:
+          type: string
+          enum: [active, resolved, cancelled]
+        latitude:
+          type: number
+        longitude:
+          type: number
+        address:
+          type: ["string", "null"]
+        description:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    SosAlertInput:
+      type: object
+      required: [userId, type, latitude, longitude]
+      properties:
+        userId:
+          type: string
+        type:
+          type: string
+          enum: [accident, breakdown, medical, fire, other]
+        latitude:
+          type: number
+        longitude:
+          type: number
+        address:
+          type: string
+        description:
+          type: string
+
+    SosAlertUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [active, resolved, cancelled]
+        description:
+          type: string
+
+    EmergencyContact:
+      type: object
+      required: [id, userId, name, phone, relation]
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        relation:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+
+    EmergencyContactInput:
+      type: object
+      required: [userId, name, phone, relation]
+      properties:
+        userId:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        relation:
+          type: string
+        photoUrl:
+          type: string
+
+    Incident:
+      type: object
+      required: [id, type, latitude, longitude, severity, createdAt]
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [accident, roadblock, flood, fire, hazard]
+        latitude:
+          type: number
+        longitude:
+          type: number
+        severity:
+          type: string
+          enum: [low, medium, high, critical]
+        description:
+          type: ["string", "null"]
+        reportedBy:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    IncidentInput:
+      type: object
+      required: [type, latitude, longitude, severity]
+      properties:
+        type:
+          type: string
+          enum: [accident, roadblock, flood, fire, hazard]
+        latitude:
+          type: number
+        longitude:
+          type: number
+        severity:
+          type: string
+          enum: [low, medium, high, critical]
+        description:
+          type: string
+        reportedBy:
+          type: string
+
+    DashboardSummary:
+      type: object
+      required: [totalAlerts, activeAlerts, resolvedAlerts, totalContacts, recentIncidents]
+      properties:
+        totalAlerts:
+          type: integer
+        activeAlerts:
+          type: integer
+        resolvedAlerts:
+          type: integer
+        totalContacts:
+          type: integer
+        recentIncidents:
+          type: integer
