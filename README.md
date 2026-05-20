@@ -1,61 +1,163 @@
-# 🚨 Road-SoS - Road Safety Hackathon MVP
+# 🚨 Road-SoS - AI Powered Road Safety Platform
 
 <p align="center">
   <img src="https://img.shields.io/badge/Hackathon-Project-green?style=for-the-badge" />
   <img src="https://img.shields.io/badge/React-Vite-blue?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Firebase-Hosting-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Gemini-AI-purple?style=for-the-badge" />
 </p>
 
 ---
 
 # 🌟 Overview
 
-**Road-SoS** is an AI-powered road safety and emergency response platform built during a hackathon.  
-The platform helps users report incidents, view live road situations, and receive AI-based emergency assistance.
+**Road-SoS** is an AI-powered road safety and emergency response platform built during a hackathon.
+
+The platform helps users:
+
+- 🚨 Report road incidents
+- 🗺️ View live road situations
+- 🤖 Get AI-powered emergency assistance
+- 📍 Track nearby emergency services
+- 🔥 Monitor incidents in real-time
 
 This project is designed as a **Hackathon MVP**, with future scalability and real-world implementation in mind.
 
 ---
 
+# 🌐 Live Deployment
+
+🚀 The project is successfully deployed on Firebase Hosting.
+
+🔗 **Live Website:**  
+[https://road-safety-hackathon-84069.web.app/](https://road-safety-hackathon-84069.web.app/)
+
+---
+
+# ☁️ Deployment (Firebase Hosting)
+
+This project is deployed using **Firebase Hosting**.
+
+## Build the Project
+
+```bash
+pnpm build
+```
+
+## Deploy to Firebase
+
+```bash
+firebase deploy
+```
+
+## Firebase Configuration (`firebase.json`)
+
+```json
+{
+  "hosting": {
+    "public": "dist/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+```
+
+---
+
+# 📦 Production Build Output
+
+After running:
+
+```bash
+pnpm build
+```
+
+Production files are generated inside:
+
+```bash
+dist/public
+```
+
+---
+
+# 🔥 Hosting Features
+
+✅ Fast global CDN delivery  
+✅ HTTPS enabled automatically  
+✅ SPA routing support  
+✅ Easy redeployment  
+✅ Free hosting tier available
+
+---
+
 # ✨ Features
 
-## ✅ Authentication System
+## 🔐 Authentication System
+
 - Firebase Authentication
-- Secure login/signup
-- User session management
+- Secure Login / Signup
+- Session Management
+- Protected Routes
 
-## ✅ AI Emergency Assistant
-- Gemini AI integration
-- Smart road safety guidance
-- Emergency suggestions
+---
 
-## ✅ Live Dashboard
-- Real-time incidents
-- Severity indicators
-- Dynamic UI updates
+## 🤖 AI Emergency Assistant
 
-## ✅ Interactive Map
-- Live location tracking
-- Incident visualization
-- Map-based monitoring
+- Gemini AI Integration
+- Smart Emergency Suggestions
+- Road Safety Guidance
+- AI-powered Help Responses
 
-## ✅ Responsive UI
-- Mobile friendly
-- Modern glassmorphism design
-- Smooth animations
+---
+
+## 📊 Live Dashboard
+
+- Real-time Incident Monitoring
+- Severity Indicators
+- Dynamic Dashboard Updates
+- Incident Feed System
+
+---
+
+## 🗺️ Interactive Map
+
+- Live Location Tracking
+- Incident Visualization
+- Nearby Emergency Services
+- Map-based Monitoring
+
+---
+
+## 📱 Responsive Modern UI
+
+- Mobile Friendly
+- Glassmorphism Design
+- Smooth Animations
+- Modern User Experience
 
 ---
 
 # 🚀 Future Features
 
-- 📱 Mobile App
+- 📱 Native Mobile Application
 - 🌍 Multi-language Support
 - 🚑 Emergency Service Integration
 - 🔔 Push Notifications
-- 📷 Image-based Incident Detection
-- 🤖 Advanced AI Assistance
+- 📷 AI-based Image Incident Detection
+- 🧠 Advanced AI Emergency Predictions
+- 📡 Real-time Traffic Analytics
+- 👥 Community Reporting System
 
-> This project is currently a Hackathon MVP and will continue evolving.
+> ⚡ This project is currently a Hackathon MVP and will continue evolving with more advanced features.
 
 ---
 
@@ -68,6 +170,7 @@ This project is designed as a **Hackathon MVP**, with future scalability and rea
 | Firebase | Authentication & Database |
 | Gemini API | AI Integration |
 | Leaflet Maps | Live Map System |
+| TypeScript | Development |
 | PNPM | Package Management |
 
 ---
@@ -81,38 +184,17 @@ Road-SoS/
 │   └── roadsos/
 │       │
 │       ├── src/
-│       │   │
 │       │   ├── components/
-│       │   │   ├── ai/
-│       │   │   ├── auth/
-│       │   │   ├── dashboard/
-│       │   │   ├── map/
-│       │   │   └── ui/
-│       │   │
 │       │   ├── pages/
-│       │   │   ├── Dashboard.tsx
-│       │   │   ├── Login.tsx
-│       │   │   ├── Signup.tsx
-│       │   │   └── Home.tsx
-│       │   │
 │       │   ├── services/
-│       │   │   ├── firebase.ts
-│       │   │   └── ai.ts
-│       │   │
 │       │   ├── hooks/
-│       │   │
 │       │   ├── context/
-│       │   │
 │       │   ├── lib/
-│       │   │
 │       │   ├── App.tsx
 │       │   ├── main.tsx
 │       │   └── index.css
 │       │
 │       ├── public/
-│       │   ├── assets/
-│       │   ├── screenshots/
-│       │   └── icons/
 │       │
 │       ├── dist/
 │       │   └── public/
@@ -126,25 +208,24 @@ Road-SoS/
 │       ├── pnpm-lock.yaml
 │       └── README.md
 │
-├── node_modules/
-│
 ├── package.json
 ├── pnpm-workspace.yaml
 └── README.md
-
 ```
+
+---
 
 # ⚙️ Installation & Setup
 
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/roadsos.git
+git clone https://github.com/parth254012-spec/roadsos.git
 ```
 
 ---
 
-## 2️⃣ Open Project
+## 2️⃣ Open Project Directory
 
 ```bash
 cd Road-SoS/artifacts/roadsos
@@ -168,7 +249,7 @@ Create a `.env` file inside:
 artifacts/roadsos
 ```
 
-Add:
+Add the following:
 
 ```env
 VITE_FIREBASE_API_KEY=your_api_key
@@ -183,6 +264,9 @@ VITE_GEMINI_API_KEY=your_gemini_key
 PORT=3000
 BASE_PATH=/
 ```
+
+⚠️ Never expose your real API keys publicly.  
+Use `.env.local` or GitHub Secrets for production deployments.
 
 ---
 
@@ -216,7 +300,7 @@ pnpm build
 firebase login
 ```
 
-## Deploy
+## Deploy Project
 
 ```bash
 firebase deploy
@@ -226,31 +310,50 @@ firebase deploy
 
 # 📸 Screenshots
 
-## Landing Page
+## 🚀 Landing Page
+
 <img width="1919" height="986" alt="image" src="https://github.com/user-attachments/assets/e91383e4-0902-461a-ad16-6bc85a4aebef" />
 
-## Home Page
+---
+
+## 🏠 Home Page
+
 <img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/1f418bac-4bf0-4878-a485-d845f84ef75f" />
 
-## Live Map
+---
+
+## 🗺️ Live Map
+
 <img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/484f052d-65ba-4939-8085-63c079fbf6aa" />
 
-## Sos Button
+---
+
+## 🚨 SOS Button
+
 <img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/5e6e9e28-59e3-4700-a382-278c78a26902" />
 
-## Profile 
+---
+
+## 👤 Profile Section
+
 <img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/02619211-cc18-42e9-8fbb-c52976e1c73d" />
 
-## AI Assistant And Nearby Services
+---
+
+## 🤖 AI Assistant & Nearby Services
+
 <img width="1919" height="888" alt="image" src="https://github.com/user-attachments/assets/dbe7923d-852a-4d4d-94e8-25cfe547369d" />
 
 ---
 
 # 🙏 Acknowledgements
 
+Special thanks to:
+
 - Firebase
 - Gemini AI
 - React Community
+- Open Source Contributors
 - Hackathon Mentors & Team Members
 
 ---
@@ -259,9 +362,9 @@ firebase deploy
 
 If you liked this project:
 
-⭐ Star the repository  
-🍴 Fork the project  
-🛠️ Contribute to improve it
+⭐ Star the Repository  
+🍴 Fork the Project  
+🛠️ Contribute to Improve It
 
 ---
 
@@ -272,5 +375,5 @@ This project is created for educational and hackathon purposes.
 ---
 
 <p align="center">
-  Made with ❤️ during Hackathon
+  Built with ❤️ During Hackathon
 </p>
