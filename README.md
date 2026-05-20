@@ -1,79 +1,276 @@
-# RoadSoS
+# 🚨 Road-SoS - Road Safety Hackathon MVP
 
-A dark, premium emergency response web app that helps drivers and road users trigger SOS alerts, manage emergency contacts, find nearby services, and get AI-powered guidance during road emergencies.
+<p align="center">
+  <img src="https://img.shields.io/badge/Hackathon-Project-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/React-Vite-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Firebase-Hosting-orange?style=for-the-badge" />
+</p>
 
-## Run & Operate
+---
 
-- `pnpm --filter @workspace/roadsos run dev` — run the frontend (port 20383, served at `/`)
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080, served at `/api`)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+# 🌟 Overview
 
-## Stack
+**Road-SoS** is an AI-powered road safety and emergency response platform built during a hackathon.  
+The platform helps users report incidents, view live road situations, and receive AI-based emergency assistance.
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- Frontend: React + Vite, Tailwind CSS v4, Framer Motion, Wouter routing
-- Maps: Leaflet + react-leaflet + OpenStreetMap (CartoDB dark tiles)
-- Auth & DB: Firebase Auth (Google Sign-In) + Firestore
-- AI: Google Gemini 1.5 Flash via `@google/generative-ai`
-- Nearby Services: Overpass API (no key required)
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM (incidents, sos_alerts, emergency_contacts)
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+This project is designed as a **Hackathon MVP**, with future scalability and real-world implementation in mind.
 
-## Where things live
+---
 
-- `artifacts/roadsos/src/` — React frontend
-  - `services/firebase.ts` — Firebase app init
-  - `services/auth.ts` — Google Sign-In / Sign-Out
-  - `services/gemini.ts` — Gemini AI integration
-  - `services/nearbyServices.ts` — Overpass API for nearby hospitals/police/fire
-  - `context/AuthContext.tsx` — Firebase auth state + contacts modal trigger
-  - `pages/` — AuthPage, Dashboard, SOSPage, LiveMapPage, ProfilePage
-  - `components/` — auth/, dashboard/, map/, ai/, sos/, ui/
-- `artifacts/api-server/src/routes/` — Express route handlers
-- `lib/db/src/schema/` — Drizzle table definitions
-- `lib/api-spec/openapi.yaml` — OpenAPI spec (source of truth)
+# ✨ Features
 
-## Architecture decisions
+## ✅ Authentication System
+- Firebase Authentication
+- Secure login/signup
+- User session management
 
-- Firebase handles auth and emergency contacts (Firestore) — these are user-scoped and don't need our Postgres
-- Postgres + Drizzle used for SOS alerts and road incidents (shared/queryable data)
-- OpenAPI-first: all API contracts defined in spec, codegen produces typed hooks + Zod validators
-- Gemini AI called directly from the frontend (no server proxy needed for this use case)
-- Overpass API used for nearby services — zero cost, no API key, real OSM data
+## ✅ AI Emergency Assistant
+- Gemini AI integration
+- Smart road safety guidance
+- Emergency suggestions
 
-## Product
+## ✅ Live Dashboard
+- Real-time incidents
+- Severity indicators
+- Dynamic UI updates
 
-- Google Sign-In authentication flow
-- Emergency contacts setup modal on first login (saved to Firestore)
-- SOS alert trigger with hold-to-activate (3-second countdown)
-- Live dark map with nearby hospitals, police stations, fire departments
-- AI emergency advisor (Gemini) for situation-specific guidance
-- Dashboard with quick stats, contacts preview, nearby services, incidents feed
-- Profile page for managing contacts and SOS history
+## ✅ Interactive Map
+- Live location tracking
+- Incident visualization
+- Map-based monitoring
 
-## User preferences
+## ✅ Responsive UI
+- Mobile friendly
+- Modern glassmorphism design
+- Smooth animations
 
-- Dark modern emergency UI (always force dark class on html element)
-- Google Sans font
-- Premium glassmorphism design
-- Red emergency accents (#ef4444)
-- No emojis in UI
+---
 
-## Gotchas
+# 🚀 Future Features
 
-- Firebase env vars must be prefixed `VITE_` for Vite to expose them on the frontend
-- Leaflet default marker icons need manual fix (L.Icon.Default paths) in MapView
-- Google Fonts `@import url()` must be the VERY FIRST line in index.css
-- After each OpenAPI spec change, run codegen before using the updated types
-- `pnpm run typecheck:libs` must pass before API server typecheck works
+- 📱 Mobile App
+- 🌍 Multi-language Support
+- 🚑 Emergency Service Integration
+- 🔔 Push Notifications
+- 📷 Image-based Incident Detection
+- 🤖 Advanced AI Assistance
 
-## Pointers
+> This project is currently a Hackathon MVP and will continue evolving.
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+---
+
+# 🛠️ Tech Stack
+
+| Technology | Usage |
+|------------|-------|
+| React + Vite | Frontend |
+| TailwindCSS | Styling |
+| Firebase | Authentication & Database |
+| Gemini API | AI Integration |
+| Leaflet Maps | Live Map System |
+| PNPM | Package Management |
+
+---
+
+# 📁 Folder Structure
+
+```bash
+Road-SoS/
+│
+├── artifacts/
+│   └── roadsos/
+│       │
+│       ├── src/
+│       │   │
+│       │   ├── components/
+│       │   │   ├── ai/
+│       │   │   ├── auth/
+│       │   │   ├── dashboard/
+│       │   │   ├── map/
+│       │   │   └── ui/
+│       │   │
+│       │   ├── pages/
+│       │   │   ├── Dashboard.tsx
+│       │   │   ├── Login.tsx
+│       │   │   ├── Signup.tsx
+│       │   │   └── Home.tsx
+│       │   │
+│       │   ├── services/
+│       │   │   ├── firebase.ts
+│       │   │   └── ai.ts
+│       │   │
+│       │   ├── hooks/
+│       │   │
+│       │   ├── context/
+│       │   │
+│       │   ├── lib/
+│       │   │
+│       │   ├── App.tsx
+│       │   ├── main.tsx
+│       │   └── index.css
+│       │
+│       ├── public/
+│       │   ├── assets/
+│       │   ├── screenshots/
+│       │   └── icons/
+│       │
+│       ├── dist/
+│       │   └── public/
+│       │
+│       ├── .env
+│       ├── firebase.json
+│       ├── vite.config.ts
+│       ├── tailwind.config.ts
+│       ├── tsconfig.json
+│       ├── package.json
+│       ├── pnpm-lock.yaml
+│       └── README.md
+│
+├── node_modules/
+│
+├── package.json
+├── pnpm-workspace.yaml
+└── README.md
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/your-username/roadsos.git
+```
+
+---
+
+## 2️⃣ Open Project
+
+```bash
+cd Road-SoS/artifacts/roadsos
+```
+
+---
+
+## 3️⃣ Install Dependencies
+
+```bash
+pnpm install
+```
+
+---
+
+## 4️⃣ Create `.env` File
+
+Create a `.env` file inside:
+
+```bash
+artifacts/roadsos
+```
+
+Add:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+VITE_GEMINI_API_KEY=your_gemini_key
+
+PORT=3000
+BASE_PATH=/
+```
+
+---
+
+## 5️⃣ Run Development Server
+
+```bash
+pnpm run dev
+```
+
+App runs on:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+# 🏗️ Production Build
+
+```bash
+pnpm build
+```
+
+---
+
+# 🔥 Firebase Deployment
+
+## Login to Firebase
+
+```bash
+firebase login
+```
+
+## Deploy
+
+```bash
+firebase deploy
+```
+
+---
+
+# 📸 Screenshots
+
+## Landing Page
+<img width="1919" height="986" alt="image" src="https://github.com/user-attachments/assets/e91383e4-0902-461a-ad16-6bc85a4aebef" />
+
+## Home Page
+<img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/1f418bac-4bf0-4878-a485-d845f84ef75f" />
+
+## Live Map
+<img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/484f052d-65ba-4939-8085-63c079fbf6aa" />
+
+## Sos Button
+<img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/5e6e9e28-59e3-4700-a382-278c78a26902" />
+
+## Profile 
+<img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/02619211-cc18-42e9-8fbb-c52976e1c73d" />
+
+## AI Assistant And Nearby Services
+<img width="1919" height="888" alt="image" src="https://github.com/user-attachments/assets/dbe7923d-852a-4d4d-94e8-25cfe547369d" />
+
+---
+
+# 🙏 Acknowledgements
+
+- Firebase
+- Gemini AI
+- React Community
+- Hackathon Mentors & Team Members
+
+---
+
+# ⭐ Support
+
+If you liked this project:
+
+⭐ Star the repository  
+🍴 Fork the project  
+🛠️ Contribute to improve it
+
+---
+
+# 📄 License
+
+This project is created for educational and hackathon purposes.
+
+---
+
+<p align="center">
+  Made with ❤️ during Hackathon
+</p>
