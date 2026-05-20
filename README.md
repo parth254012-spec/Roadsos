@@ -1,4 +1,4 @@
-```txt
+```text
 ██████╗  ██████╗  █████╗ ██████╗ ███████╗ ██████╗ ███████╗
 ██╔══██╗██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔═══██╗██╔════╝
 ██████╔╝██║   ██║███████║██║  ██║███████╗██║   ██║███████╗
@@ -6,7 +6,8 @@
 ██║  ██║╚██████╔╝██║  ██║██████╔╝███████║╚██████╔╝███████║
 ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝
 
-        🚨 AI Powered Road Emergency Response System 🚨
+      🚨 AI-Powered Road Safety Platform
+
 ```
 <p align="center">
   <img src="https://img.shields.io/badge/Hackathon-Project-green?style=for-the-badge" />
@@ -16,7 +17,20 @@
 </p>
 
 ---
+## 🚀 Why Road-SoS?
 
+```diff
++ Real-time Emergency Detection
++ AI-Powered Road Safety Assistance
++ Live Incident Monitoring
++ Smart Severity Classification
++ Firebase Realtime Sync
++ Interactive Map System
++ Emergency Nearby Services Detection
++ Modern Glassmorphism UI
++ Fully Responsive Design
++ Firebase Hosted Infrastructure
+```
 # 🌟 Overview
 
 **Road-SoS** is an AI-powered road safety and emergency response platform built during a hackathon.
@@ -154,6 +168,34 @@ dist/public
 
 ---
 
+## 📊 Project Statistics
+
+| Metric | Value |
+|--------|-------|
+| Frontend Pages | 8+ |
+| Components | 40+ |
+| APIs Integrated | 5+ |
+| Firebase Services | Auth + Firestore + Hosting |
+| AI Models Used | Gemini AI |
+| Maps Used | OpenStreetMap + Leaflet |
+| Deployment | Firebase Hosting |
+| Responsive Support | Mobile + Desktop |
+
+---
+
+## 🧠 Core MVP Modules
+
+```text
+🚨 SOS Emergency Trigger
+🗺️ Live Incident Map
+🤖 AI Assistant
+📍 Nearby Emergency Services
+📊 Real-time Dashboard
+🔐 Authentication System
+☁️ Cloud Hosted Infrastructure
+```
+---
+
 # 🚀 Future Features
 
 - 📱 Native Mobile Application
@@ -180,6 +222,18 @@ dist/public
 | Leaflet Maps | Live Map System |
 | TypeScript | Development |
 | PNPM | Package Management |
+
+---
+## ⚡ Code USP (Unique Selling Points)
+
+- Realtime Firebase Data Sync
+- AI-based Emergency Severity Detection
+- Dynamic Incident Rendering
+- Lightweight Vite + React Architecture
+- Responsive Glassmorphism UI
+- Fast Firebase Hosting Deployment
+- Modular Component Structure
+- API Ready Scalable Architecture
 
 ---
 
@@ -228,36 +282,62 @@ Road-SoS/
 ```mermaid
 flowchart TD
 
-A[👤 User] --> B[📱 Frontend - React + Vite]
-B --> C[🔥 Firebase Authentication]
-B --> D[🗺️ Leaflet + OpenStreetMap]
-B --> E[🤖 Gemini AI Assistant]
+    A[👤 User Opens Road-SoS App]
 
-E --> F[🧠 AI Emergency Guidance]
-D --> G[📍 Live Incident Mapping]
+    A --> B[🔐 Login / Authentication]
+    B --> C[🏠 Dashboard]
 
-B --> H[⚡ API Layer]
-H --> I[🔥 Firebase Firestore Database]
+    C --> D[🗺️ Live Incident Map]
+    C --> E[🚨 SOS Emergency Button]
+    C --> F[🤖 AI Assistant]
+    C --> G[📍 Nearby Services]
+    C --> H[👤 User Profile]
 
-I --> J[📊 Dashboard Analytics]
-I --> K[🚨 SOS Incident Reports]
-I --> L[👥 User Data]
+    E --> I[📡 Capture Live Location]
+    I --> J[🔥 Send Data to Firebase]
 
-K --> M[🚑 Emergency Response Workflow]
-M --> N[🏥 Hospitals]
-M --> O[🚓 Police]
-M --> P[🚒 Ambulance Services]
+    J --> K[🤖 Gemini AI Analysis]
+    K --> L[⚠️ Severity Detection]
 
-Q[☁️ Firebase Hosting] --> B
+    L --> M[📦 Store Incident Data]
+    M --> N[🗺️ Update Live Dashboard]
+    N --> O[📍 Show Incident on Map]
 
-style A fill:#ff4b4b,color:#fff
-style B fill:#2563eb,color:#fff
-style C fill:#f59e0b,color:#fff
-style D fill:#10b981,color:#fff
-style E fill:#8b5cf6,color:#fff
-style I fill:#ef4444,color:#fff
-style Q fill:#f97316,color:#fff
+    O --> P[🚑 Nearby Emergency Services]
+    P --> Q[🏥 Hospitals]
+    P --> R[🚓 Police Stations]
+    P --> S[🚒 Ambulance Services]
+
+    F --> T[🧠 AI Safety Suggestions]
+    G --> U[🌐 OpenStreetMap + Leaflet API]
+
+    T --> V[⚛️ React Frontend]
+    U --> V
+
+    V --> W[🔗 API Integration Layer]
+    W --> X[🔥 Firebase Backend]
+    W --> Y[🤖 Gemini AI API]
+
+    X --> Z[☁️ Firebase Hosting]
+
+    Z --> AA[📱 Real-time Emergency Response System]
 ```
+## 🏗️ System Architecture
+
+```text
+Frontend (React + Vite)
+        ↓
+API Integration Layer
+        ↓
+Firebase Backend Services
+        ↓
+Gemini AI Processing
+        ↓
+Realtime Incident Updates
+        ↓
+Live Dashboard + Map Rendering
+```
+---
 
 # ⚙️ Installation & Setup
 
@@ -398,7 +478,6 @@ Special thanks to:
 - Gemini AI
 - React Community
 - Open Source Contributors
-- Hackathon Mentors & Team Members
 
 ---
 
