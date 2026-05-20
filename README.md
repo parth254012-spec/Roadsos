@@ -1,5 +1,13 @@
-# 🚨 Road-SoS - AI Powered Road Safety Platform
+```txt
+██████╗  ██████╗  █████╗ ██████╗ ███████╗ ██████╗ ███████╗
+██╔══██╗██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔═══██╗██╔════╝
+██████╔╝██║   ██║███████║██║  ██║███████╗██║   ██║███████╗
+██╔══██╗██║   ██║██╔══██║██║  ██║╚════██║██║   ██║╚════██║
+██║  ██║╚██████╔╝██║  ██║██████╔╝███████║╚██████╔╝███████║
+╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝
 
+        🚨 AI Powered Road Emergency Response System 🚨
+```
 <p align="center">
   <img src="https://img.shields.io/badge/Hackathon-Project-green?style=for-the-badge" />
   <img src="https://img.shields.io/badge/React-Vite-blue?style=for-the-badge" />
@@ -214,6 +222,42 @@ Road-SoS/
 ```
 
 ---
+
+# 🏗️ RoadSoS Workflow Architecture
+
+```mermaid
+flowchart TD
+
+A[👤 User] --> B[📱 Frontend - React + Vite]
+B --> C[🔥 Firebase Authentication]
+B --> D[🗺️ Leaflet + OpenStreetMap]
+B --> E[🤖 Gemini AI Assistant]
+
+E --> F[🧠 AI Emergency Guidance]
+D --> G[📍 Live Incident Mapping]
+
+B --> H[⚡ API Layer]
+H --> I[🔥 Firebase Firestore Database]
+
+I --> J[📊 Dashboard Analytics]
+I --> K[🚨 SOS Incident Reports]
+I --> L[👥 User Data]
+
+K --> M[🚑 Emergency Response Workflow]
+M --> N[🏥 Hospitals]
+M --> O[🚓 Police]
+M --> P[🚒 Ambulance Services]
+
+Q[☁️ Firebase Hosting] --> B
+
+style A fill:#ff4b4b,color:#fff
+style B fill:#2563eb,color:#fff
+style C fill:#f59e0b,color:#fff
+style D fill:#10b981,color:#fff
+style E fill:#8b5cf6,color:#fff
+style I fill:#ef4444,color:#fff
+style Q fill:#f97316,color:#fff
+```
 
 # ⚙️ Installation & Setup
 
