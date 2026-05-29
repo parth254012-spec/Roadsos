@@ -222,6 +222,7 @@ dist/public
 | Leaflet Maps | Live Map System |
 | TypeScript | Development |
 | PNPM | Package Management |
+| Node.jS | V20.19.5 |
 
 ---
 ## ⚡ Code USP (Unique Selling Points)
